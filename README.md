@@ -10,3 +10,5 @@ Machine learning Paper implementation
 [SMOTE](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_SMOTE_with_pca_visualization.ipynb)
 
 [SVD](https://github.com/ywkim92/Paper-implementation/blob/main/SVD_implementation.ipynb)
+
+[Target encoder](https://github.com/ywkim92/Paper-implementation/blob/main/Target_encoder.ipynb)
