@@ -9,6 +9,8 @@ Machine learning Paper implementation
 
 [Represent_tree](https://github.com/ywkim92/Paper-implementation/blob/main/Represent_tree.ipynb)
 
+[Scalers](https://github.com/ywkim92/Paper-implementation/blob/main/Scalers.ipynb)
+
 [SMOTE](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_SMOTE_with_pca_visualization.ipynb)
 
 [SVD](https://github.com/ywkim92/Paper-implementation/blob/main/SVD_implementation.ipynb)
