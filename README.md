@@ -1,6 +1,8 @@
 # Paper-implementation
 Machine learning Paper implementation
 
+[Boxcox](https://github.com/ywkim92/Paper-implementation/blob/main/Boxcox.ipynb)
+
 [Feature importance](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_importance.ipynb)
 
 [Gram-Schmidt process](https://github.com/ywkim92/Paper-implementation/blob/main/Gram-Schmidt_process.ipynb)
