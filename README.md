@@ -9,6 +9,8 @@ Machine learning Paper implementation
 
 [PCA](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_PCA.ipynb)
 
+[Q-Q plot](https://github.com/ywkim92/Paper-implementation/blob/main/QQplot.ipynb)
+
 [Represent_tree](https://github.com/ywkim92/Paper-implementation/blob/main/Represent_tree.ipynb)
 
 [Scalers](https://github.com/ywkim92/Paper-implementation/blob/main/Scalers.ipynb)
