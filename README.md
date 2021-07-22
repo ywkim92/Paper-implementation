@@ -7,6 +7,8 @@ Machine learning Paper implementation
 
 [Gram-Schmidt process](https://github.com/ywkim92/Paper-implementation/blob/main/Gram-Schmidt_process.ipynb)
 
+[MLE](https://github.com/ywkim92/Paper-implementation/blob/main/MLE.ipynb)
+
 [PCA](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_PCA.ipynb)
 
 [Q-Q plot](https://github.com/ywkim92/Paper-implementation/blob/main/QQplot.ipynb)
