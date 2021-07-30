@@ -5,7 +5,11 @@ Machine learning Paper implementation
 
 [Feature importance](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_importance.ipynb)
 
+[Feature selection](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_selection.ipynb)
+
 [Gram-Schmidt process](https://github.com/ywkim92/Paper-implementation/blob/main/Gram-Schmidt_process.ipynb)
+
+[Linear regression](https://github.com/ywkim92/Paper-implementation/blob/main/Linear_regression.ipynb)
 
 [MLE](https://github.com/ywkim92/Paper-implementation/blob/main/MLE.ipynb)
 
