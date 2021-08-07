@@ -28,3 +28,5 @@ Machine learning Paper implementation
 [Target encoder](https://github.com/ywkim92/Paper-implementation/blob/main/Target_encoder.ipynb)
 
 [Visualizing_Classifiers](https://github.com/ywkim92/Paper-implementation/blob/main/Visualizing_Classifiers.ipynb)
+
+[Welch's t-test](https://github.com/ywkim92/Paper-implementation/blob/main/Welch_ttest.ipynb)
