@@ -17,7 +17,7 @@ Machine learning Paper implementation
 
 [Q-Q plot](https://github.com/ywkim92/Paper-implementation/blob/main/QQplot.ipynb)
 
-[Represent_tree](https://github.com/ywkim92/Paper-implementation/blob/main/Represent_tree.ipynb)
+[Representing decision tree](https://github.com/ywkim92/Paper-implementation/blob/main/Represent_tree.ipynb)
 
 [Scalers](https://github.com/ywkim92/Paper-implementation/blob/main/Scalers.ipynb)
 
@@ -27,6 +27,6 @@ Machine learning Paper implementation
 
 [Target encoder](https://github.com/ywkim92/Paper-implementation/blob/main/Target_encoder.ipynb)
 
-[Visualizing_Classifiers](https://github.com/ywkim92/Paper-implementation/blob/main/Visualizing_Classifiers.ipynb)
+[Visualizing Classifiers](https://github.com/ywkim92/Paper-implementation/blob/main/Visualizing_Classifiers.ipynb)
 
 [Welch's t-test](https://github.com/ywkim92/Paper-implementation/blob/main/Welch_ttest.ipynb)
