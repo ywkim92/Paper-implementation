@@ -11,6 +11,8 @@ Machine learning Paper implementation
 
 [Linear regression](https://github.com/ywkim92/Paper-implementation/blob/main/Linear_regression.ipynb)
 
+[Logistic regression](https://github.com/ywkim92/Paper-implementation/blob/main/Logistic_regression.ipynb)
+
 [MLE](https://github.com/ywkim92/Paper-implementation/blob/main/MLE.ipynb)
 
 [PCA](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_PCA.ipynb)
