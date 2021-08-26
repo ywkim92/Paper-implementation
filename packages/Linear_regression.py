@@ -50,7 +50,7 @@ class linear_regression:
         ci_lower = np.round(self.beta - self.std_error * t.ppf(1-alpha/2, self.n_samples - self.n_features -1), round_decimals)
         ci_upper = np.round(self.beta + self.std_error * t.ppf(1-alpha/2, self.n_samples - self.n_features -1), round_decimals)
         if feature_names is None:
-            feat_idx = ['x0(INTCP)'] + ['x{}'.format(i) for i in range(1, n_features+1)]
+            feat_idx = ['x0(INTCP)'] + ['x{}'.format(i) for i in range(1, self.n_features+1)]
             coef = pd.DataFrame(np.array([self.beta, self.std_error, self.t_values, np.round(self.t_pvalues, round_decimals), ci_lower, ci_upper]).T, index = feat_idx, columns= 
                                ['coef.', 'std. error', 't_value', 'Pr(>|t|)', '{}% LWR'.format(int(100*(1-alpha))), '{}% UPR'.format(int(100*(1-alpha)))])
         else:
