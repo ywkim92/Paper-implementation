@@ -37,7 +37,7 @@ class linear_regression:
         
     def predict(self, X):
         X_ = np.append(np.ones((X.shape[0], 1)), X, axis=1)
-        return X.dot(self.beta)
+        return X_.dot(self.beta)
     
     def summary(self, feature_names = None, round_decimals=3, alpha=0.05):
         res_min = self.residual.min()
