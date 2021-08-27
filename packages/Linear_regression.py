@@ -34,6 +34,9 @@ class linear_regression:
         self.std_error = np.sqrt((sse/(n-p-1)) * Q.diagonal())
         self.t_values = self.beta / self.std_error
         self.t_pvalues = [2*(1 - t.cdf(abs(i), n-p-1)) for i in self.t_values]
+        self.log_likelihood = np.log(norm.pdf(y, y_hat, self.residual.std(ddof=0))).sum()
+        self.aic = -2 * self.log_likelihood + 2*self.beta.size
+        self.bic = -2 * self.log_likelihood + self.beta.size * np.log(self.n_samples)
         
     def predict(self, X):
         X_ = np.append(np.ones((X.shape[0], 1)), X, axis=1)
@@ -61,6 +64,5 @@ class linear_regression:
         r2 = 'R-squared: {}, Adjusted R-squared: {}'.format(self.r_sq, self.adj_r)
         res_std_err = 'Residual standard error: {} on {} degrees of freedom'.format(self.mse, self.n_samples - self.n_features -1)
         F_stats = 'F-statistic: {} on {} and {} DF, p-value: {}'.format(self.f_value, self.n_features, self.n_samples - self.n_features -1, self.f_pvalue)
-        print(res, coef, res_std_err, r2, F_stats, sep='\n'+'='*70+'\n')
-
-
+        criterions = 'Log-likelihood: {}, AIC: {}, BIC: {}'.format(self.log_likelihood, self.aic, self.bic)
+        print(res, coef, res_std_err, r2, F_stats, criterions, sep='\n'+'='*70+'\n')
