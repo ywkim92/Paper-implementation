@@ -19,7 +19,7 @@ Machine learning Paper implementation
 
 [Q-Q plot](https://github.com/ywkim92/Paper-implementation/blob/main/QQplot.ipynb)
 
-[Representing decision tree](https://github.com/ywkim92/Paper-implementation/blob/main/Represent_tree.ipynb)
+[Representing decision tree](https://github.com/ywkim92/Paper-implementation/blob/main/Representing_decision_tree.ipynb)
 
 [Scalers](https://github.com/ywkim92/Paper-implementation/blob/main/Scalers.ipynb)
 
