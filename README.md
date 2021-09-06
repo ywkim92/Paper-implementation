@@ -1,5 +1,6 @@
 # Paper-implementation
-Machine learning Paper implementation
+Implementing Machine Learning Algorithms  
+[My tech blog](https://github.com/ywkim92/Paper-implementation)
 
 [Boxcox](https://github.com/ywkim92/Paper-implementation/blob/main/Boxcox.ipynb)
 
