@@ -4,6 +4,8 @@ Implementing Machine Learning Algorithms
 - - -  
 [Boxcox](https://github.com/ywkim92/Paper-implementation/blob/main/Boxcox.ipynb)
 
+[Decision_tree](https://github.com/ywkim92/Paper-implementation/blob/main/Decision_tree.ipynb)
+
 [Feature importance](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_importance.ipynb)
 
 [Feature selection](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_selection.ipynb)
