@@ -12,6 +12,8 @@ Implementing Machine Learning Algorithms
 
 [Gram-Schmidt process](https://github.com/ywkim92/Paper-implementation/blob/main/Gram-Schmidt_process.ipynb)
 
+[Grid search](https://github.com/ywkim92/Paper-implementation/blob/main/GridSearchCV.ipynb)
+
 [Linear regression](https://github.com/ywkim92/Paper-implementation/blob/main/Linear_regression.ipynb)
 
 [Logistic regression](https://github.com/ywkim92/Paper-implementation/blob/main/Logistic_regression.ipynb)
