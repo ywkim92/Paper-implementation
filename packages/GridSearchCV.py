@@ -1,31 +1,30 @@
 import numpy as np
 import pandas as pd
 from itertools import product
-from sklearn.model_selection import KFold
+from sklearn.model_selection import KFold, StratifiedKFold
 import sklearn.metrics as metrics
 import copy
 
 class grid_cv:
-    def __init__(self, estimator, param_grid, cv = 5, scoring = 'f1_score'):
+    def __init__(self, estimator, param_grid, scoring, scoring_average = 'binary', cv = 5, ):
         self.estimator = estimator
         self.param_grid = param_grid
         self.scoring = scoring
+        self.scoring_average = scoring_average
         self.cv = cv
         
     def __repr__(self):
         return 'grid_cv(estimator={},\n        param_grid={},\n        cv={}, scoring={})'.format(self.estimator, self.param_grid, self.cv, self.scoring)
     
     def fit(self, X_train, y_train):
-
-        zo = np.vectorize(lambda x: .0 if x==.0 else 1.)
         
         self.result = dict()
         
         candidates = list(product(*self.param_grid.values()))
         
         for cand_idx in range(len(candidates)):
-            kf = KFold(n_splits = self.cv)
-            kf_ = kf.split(X_train)
+            kf = StratifiedKFold(n_splits = self.cv)
+            kf_ = kf.split(X_train, y_train)
             scores = []
 
             for t, v in kf_:
@@ -42,11 +41,13 @@ class grid_cv:
                 model.fit(X_tr, y_tr)
 
                 Pred = model.predict(X_va)
-
-                if self.scoring == 'accuracy_score':
-                    score = 1- metrics.hamming_loss(zo(y_va), Pred,)
+                
+                if self.scoring_average == 'binary':
+                    score = getattr(metrics, self.scoring)((y_va), Pred, )
+                    #print(score)
                 else:
-                    score = getattr(metrics, self.scoring)(zo(y_va), Pred, average='samples', zero_division=1)
+                    score = getattr(metrics, self.scoring)((y_va), Pred, average = self.scoring_average)
+                    #print(score)
                 scores.append(score)
 
             self.result[candidates[cand_idx]] = np.mean(scores)
