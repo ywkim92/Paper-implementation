@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from itertools import product
 from sklearn.model_selection import KFold, StratifiedKFold
+from sklearn.base import is_classifier
 import sklearn.metrics as metrics
 import copy
 
@@ -23,8 +24,12 @@ class grid_cv:
         candidates = list(product(*self.param_grid.values()))
         
         for cand_idx in range(len(candidates)):
-            kf = StratifiedKFold(n_splits = self.cv)
-            kf_ = kf.split(X_train, y_train)
+            if is_classifier(self.estimator)==True:
+                kf = StratifiedKFold(n_splits = self.cv)
+                kf_ = kf.split(X_train, y_train)
+            else:
+                kf = KFold(n_splits = self.cv)
+                kf_ = kf.split(X_train,)
             scores = []
 
             for t, v in kf_:
@@ -43,7 +48,10 @@ class grid_cv:
                 Pred = model.predict(X_va)
                 
                 if self.scoring_average == 'binary':
-                    score = getattr(metrics, self.scoring)((y_va), Pred, )
+                    if ('square' in self.scoring) | ('absolute' in self.scoring): 
+                        score = - getattr(metrics, self.scoring)((y_va), Pred, )
+                    else:
+                        score = getattr(metrics, self.scoring)((y_va), Pred, )
                     #print(score)
                 else:
                     score = getattr(metrics, self.scoring)((y_va), Pred, average = self.scoring_average)
