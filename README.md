@@ -4,11 +4,11 @@ Implementing Machine Learning Algorithms
 - - -  
 [Boxcox](https://github.com/ywkim92/Paper-implementation/blob/main/Boxcox.ipynb)
 
-[Decision_tree](https://github.com/ywkim92/Paper-implementation/blob/main/Decision_tree.ipynb)
+[Decision_tree](https://github.com/ywkim92/Paper-implementation/blob/main/Decision_tree.ipynb): [blog post](https://ywkim92.github.io/machine_learning/decision_tree/)
 
-[Feature importance](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_importance.ipynb)
+[Feature importance](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_importance.ipynb): [blog post](https://ywkim92.github.io/machine_learning/feature_importance/)
 
-[Feature selection](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_selection.ipynb)
+[Feature selection](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_selection.ipynb): [blog post](https://ywkim92.github.io/machine_learning/feature_selection/)
 
 [Gram-Schmidt process](https://github.com/ywkim92/Paper-implementation/blob/main/Gram-Schmidt_process.ipynb)
 
@@ -24,11 +24,11 @@ Implementing Machine Learning Algorithms
 
 [Q-Q plot](https://github.com/ywkim92/Paper-implementation/blob/main/QQplot.ipynb)
 
-[Representing decision tree](https://github.com/ywkim92/Paper-implementation/blob/main/Representing_decision_tree.ipynb)
+[Representing decision tree](https://github.com/ywkim92/Paper-implementation/blob/main/Representing_decision_tree.ipynb): [blog post](https://ywkim92.github.io/machine_learning/decision_tree/)
 
-[Scalers](https://github.com/ywkim92/Paper-implementation/blob/main/Scalers.ipynb)
+[Scalers](https://github.com/ywkim92/Paper-implementation/blob/main/Scalers.ipynb): [blog post](https://ywkim92.github.io/machine_learning/scalers/)
 
-[SMOTE](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_SMOTE_with_pca_visualization.ipynb)
+[SMOTE](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_SMOTE_with_pca_visualization.ipynb): [blog post](https://ywkim92.github.io/machine_learning/SMOTE/)
 
 [SVD](https://github.com/ywkim92/Paper-implementation/blob/main/SVD_implementation.ipynb)
 
