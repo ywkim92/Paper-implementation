@@ -1,44 +1,28 @@
 import numpy as np
 import pandas as pd
 
-from sklearn.metrics import mean_absolute_error, mean_squared_error, ndcg_score
-def rec_predict(model, testset, scoring='mae'):
-    result = []
-    if scoring == 'mae':
-        for idx in range(testset.shape[0]):
-            pred_value = model.predict(str(testset.iloc[idx, 0]), str(testset.iloc[idx, 1])).est
-            result.append(pred_value)
-        return mean_absolute_error(testset.iloc[:, -1].values, result)
+def train_test_split_rec(data_input, user_vars, traning_only, test_for_training, cold_users, random_state=None):
+    data = data_input.copy()
+    data.reset_index(inplace=True)
+    data.drop('index', axis=1, inplace=True)
     
-    elif scoring == 'rmse':
-        for idx in range(testset.shape[0]):
-            pred_value = model.predict(str(testset.iloc[idx, 0]), str(testset.iloc[idx, 1])).est
-            result.append(pred_value)
-        return mean_squared_error(testset.iloc[:, -1].values, result, squared=False)
+    users = np.unique(data[user_vars])
+    rng = np.random.default_rng(random_state)
+    users_training = rng.choice(users, int(users.size*traning_only), replace=False)
+    users_test = np.setdiff1d(users, users_training)
+    users_cold = rng.choice(users_test, int(users.size*cold_users), replace=False)
+    users_test = np.setdiff1d(users_test, users_cold)
     
-    elif scoring == 'ndcg':
-        col_rating = testset.columns[-1]
-        #print(testset.columns[:2])
-        testset_ = testset.groupby(testset.columns[:2].tolist()).first()
-        user_ids = np.unique(testset.iloc[:, 0])
-        
-        for u in user_ids:
-            subset = testset_.loc[u, col_rating]
-            true = subset.values.reshape(1, -1)
-            pred = []
-            items = subset.index
-            for i in items:
-                pred.append(model.predict(str(u), str(i)).est)
-            pred = np.array(pred).reshape(1, -1)
-            
-            if pred.size==1:
-                continue
-                #true = np.append(true, 0).reshape(1, -1)
-                #pred = np.append(pred, 0).reshape(1, -1)
-            else:
-                #print(true, pred)
-                score = ndcg_score(true, pred)
-                result.append(score)
-        return np.mean(result)
-    else:
-        raise ValueError('Not supported.') from None
+    training_idx = data[data[user_vars].isin(users_training)==True].index.tolist()
+    for test in users_test:
+        test_df = data[data[user_vars]==test]
+        test_idx = test_df.index.tolist()
+        n_samples = test_df.shape[0]
+        if (n_samples*test_for_training) >= .5:
+            rng = np.random.default_rng(random_state+n_samples)
+            training_idx += rng.choice(test_idx, int(n_samples*test_for_training)+1, replace=False).tolist()
+   
+    train = data.loc[training_idx]
+    test = data[data.index.isin(train.index)==False]
+    
+    return train, test
