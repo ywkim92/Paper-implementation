@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error, ndcg_score
 def rec_predict(model, testset, scoring='mae'):
     result = []
     if scoring == 'mae':
