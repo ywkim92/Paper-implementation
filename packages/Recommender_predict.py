@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error, ndcg_score
-def rec_predict(model, testset, scoring='mae'):
+def rec_predict(model, testset, scoring='mae', ndcg_k = 3):
     result = []
     if scoring == 'mae':
         for idx in range(testset.shape[0]):
@@ -37,7 +37,7 @@ def rec_predict(model, testset, scoring='mae'):
                 #pred = np.append(pred, 0).reshape(1, -1)
             else:
                 #print(true, pred)
-                score = ndcg_score(true, pred)
+                score = ndcg_score(true, pred, k = ndcg_k)
                 result.append(score)
         return np.mean(result)
     else:
