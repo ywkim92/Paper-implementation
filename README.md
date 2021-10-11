@@ -6,6 +6,8 @@ Implementing Machine Learning Algorithms
 
 [Decision_tree](https://github.com/ywkim92/Paper-implementation/blob/main/Decision_tree.ipynb): [blog post](https://ywkim92.github.io/machine_learning/decision_tree/)
 
+[Discriminant analysis](https://github.com/ywkim92/Paper-implementation/blob/main/Discriminant_analysis.ipynb)
+
 [Feature importance](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_importance.ipynb): [blog post](https://ywkim92.github.io/machine_learning/feature_importance/)
 
 [Feature selection](https://github.com/ywkim92/Paper-implementation/blob/main/Feature_selection.ipynb): [blog post](https://ywkim92.github.io/machine_learning/feature_selection/)
