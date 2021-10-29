@@ -7,7 +7,7 @@ import sklearn.metrics as metrics
 from sklearn.metrics import mean_absolute_error, mean_squared_error, ndcg_score
 import copy
 
-def rec_predict(model, testset, scoring='mae', ndcg_k = 3):
+def _rec_predict(model, testset, scoring='mae', ndcg_k = 3):
     result = []
     if scoring == 'mae':
         for idx in range(testset.shape[0]):
@@ -46,6 +46,47 @@ def rec_predict(model, testset, scoring='mae', ndcg_k = 3):
     else:
         raise ValueError('Not supported.') from None
 
+        
+def rec_predict(model, testset, scoring='mae', ndcg_k = 3, fill_unrated = 1.):
+    df = pd.DataFrame(model.test(testset)).drop('details', axis=1)
+    df1 = df[df['r_ui']!=fill_unrated].copy()
+    
+    if scoring == 'mae':
+        true = df['r_ui']
+        pred = df['est']
+        return mean_absolute_error(true, pred)
+
+    elif scoring == 'mae_without_unrated':
+        true = df1['r_ui']
+        pred = df1['est']
+        return mean_absolute_error(true, pred)
+    
+    elif scoring == 'rmse':
+        true = df['r_ui']
+        pred = df['est']
+        return mean_squared_error(true, pred, squared=False)
+    
+    elif scoring == 'rmse_without_unrated':
+        true = df1['r_ui']
+        pred = df1['est']
+        return mean_squared_error(true, pred, squared=False)
+    
+    elif scoring == 'ndcg':
+        result = []
+        user_ids = np.unique(df['uid'])
+        df_ndcg = df.groupby(['uid','iid']).first()
+        
+        for u in user_ids:
+            df_ndcg1 = df_ndcg.loc[u].copy()
+            true = df_ndcg1[['r_ui']].T
+            pred = df_ndcg1[['est']].T
+            score = ndcg_score(true, pred, k=ndcg_k)
+            result.append(score)
+        return np.mean(result)
+    else:
+        raise ValueError('Not supported.') from None
+        
+        
 def trainset_to_df(trainset, column_names = None):
     array_ = np.array([]).reshape(-1, 3)
     for ky in trainset.ur.keys():
@@ -105,9 +146,9 @@ class grid_cv_surp:
                     model.fit(trainset_)
                 
                 if self.scoring == 'ndcg':
-                    score = rec_predict(model, pd.DataFrame(v), scoring=self.scoring, ndcg_k = self.ndcg_k)
+                    score = rec_predict(model, v, scoring=self.scoring, ndcg_k = self.ndcg_k, fill_unrated = fill_unrated)
                 else:
-                    score = -rec_predict(model, pd.DataFrame(v), scoring=self.scoring, ndcg_k = self.ndcg_k)
+                    score = -rec_predict(model, v, scoring=self.scoring, ndcg_k = self.ndcg_k, fill_unrated = fill_unrated)
                 
                 scores.append(score)
 
