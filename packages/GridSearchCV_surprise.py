@@ -3,7 +3,6 @@ import pandas as pd
 from itertools import product
 from surprise.model_selection import split
 from surprise import Reader, Dataset
-import sklearn.metrics as metrics
 from sklearn.metrics import mean_absolute_error, mean_squared_error, ndcg_score
 import copy
 
@@ -101,7 +100,22 @@ def trainset_to_df(trainset, column_names = None):
     df.iloc[:, 1] = df.iloc[:, 1].apply(lambda x: trainset.to_raw_iid(x))
     
     return df
-        
+
+def cross_validate_surp(estimator, data, cv, reader, scoring, ndcg_k = 3, include_unrated=False, fill_unrated=1.):
+    score=[]
+    for trainset, testset in cv.split(data):
+        if include_unrated:
+            estimator.fit(trainset)
+        else:
+            trainset_df = trainset_to_df(trainset, )
+            trainset_df = trainset_df[trainset_df.iloc[:, -1]!=fill_unrated]
+            trainset_ = Dataset.load_from_df(trainset_df, reader)
+            trainset_ = trainset_.build_full_trainset()
+            estimator.fit(trainset_)
+            
+        score.append(rec_predict(estimator, testset, scoring=scoring, ndcg_k = ndcg_k, fill_unrated=fill_unrated))
+    return score
+
 class grid_cv_surp:
     ''''scoring' parameter support 'mae', 'rmse', 'ndcg' only.
     '''
