@@ -32,7 +32,7 @@ Implementing Machine Learning Algorithms
 
 [SMOTE](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_SMOTE_with_pca_visualization.ipynb): [blog post](https://ywkim92.github.io/machine_learning/SMOTE/)
 
-[SVD](https://github.com/ywkim92/Paper-implementation/blob/main/SVD_implementation.ipynb)
+[SVD](https://github.com/ywkim92/Paper-implementation/blob/main/SVD_implementation.ipynb): [blog post](https://ywkim92.github.io/machine_learning/SVD/)
 
 [Target encoder](https://github.com/ywkim92/Paper-implementation/blob/main/Target_encoder.ipynb)
 
