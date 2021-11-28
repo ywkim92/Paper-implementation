@@ -22,6 +22,8 @@ Implementing Machine Learning Algorithms
 
 [MLE](https://github.com/ywkim92/Paper-implementation/blob/main/MLE.ipynb)
 
+[NDCG](https://github.com/ywkim92/Paper-implementation/blob/main/nDCG.ipynb)
+
 [PCA](https://github.com/ywkim92/Paper-implementation/blob/main/Paper%20implementation_PCA.ipynb): [blog post](https://ywkim92.github.io/machine_learning/PCA/)
 
 [Q-Q plot](https://github.com/ywkim92/Paper-implementation/blob/main/QQplot.ipynb)
