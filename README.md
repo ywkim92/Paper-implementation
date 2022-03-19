@@ -16,6 +16,8 @@ Implementing Machine Learning Algorithms
 
 [Grid search](https://github.com/ywkim92/Paper-implementation/blob/main/GridSearchCV.ipynb)
 
+[Initializer](https://github.com/ywkim92/Paper-implementation/blob/main/Initializer.ipynb)
+
 [Linear regression](https://github.com/ywkim92/Paper-implementation/blob/main/Linear_regression.ipynb)
 
 [Logistic regression](https://github.com/ywkim92/Paper-implementation/blob/main/Logistic_regression.ipynb)
