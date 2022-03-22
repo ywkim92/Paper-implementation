@@ -24,8 +24,14 @@ def update_readme(file_list, ):
     lines_post_new = [l for l in lines_post if l!='\n']+add_list
     lines_post_sorted = sorted(lines_post_new, key=lambda x: re.search(r'(?<=^\d\. \[)[^\[\]]+(?=\])', x).group().lower())
     
-    updated_list = lines_pre + lines_post_sorted
+    updated_list = lines_pre + ['\n'.join(lines_post_sorted)]
     updated_str = ''.join(updated_list)
     
     with open(readme_path,'w') as file:
         file.write(updated_str)
+        
+        
+        
+if __name__=='__main__':
+    file_list = input().split(', ')
+    update_readme(file_list, )
