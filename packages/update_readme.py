@@ -22,12 +22,12 @@ def update_readme( ):
     with open(readme_path) as file:
         for f in file:
             if re.search(r'(?<=main/)[^)]+\.ipynb(?=\))', f) is not None:
-                
                 f_cur_url = re.search(r'(?<=main/)[^)]+\.ipynb(?=\))', f).group(0)
                 f_keyword = re.search(r'[^)/]+\.ipynb$', f_cur_url).group(0)
+                change_url_dict_copy.pop(f_keyword)
+                
                 if f_cur_url != change_url_dict_[f_keyword]:
                     print('* url changed', f_keyword)
-                    change_url_dict_copy.pop(f_keyword)
                     f = f.replace(f_cur_url, change_url_dict_[f_keyword])
             f = f.replace(github_url, notebook_viewer)
             
@@ -41,12 +41,12 @@ def update_readme( ):
     for name in file_list:
         re_search = re.search(r'[\w\-/ %]+\.ipynb$', name)
         if re_search is None: continue
-        else: 
+        else:
             re_search_word = re.search(r'[^/]+(?=\.ipynb)', re_search.group(0)).group(0)
-            if re_search_word in change_url_dict_.values():
-                re_search_url = notebook_viewer + re_search.group(0).replace(' ','%20')
-                add_str = '1. [{}]({})\n'.format( re_search_word.capitalize()  , re_search_url )
-                add_list.append(add_str)
+            print(re_search_word)
+            re_search_url = notebook_viewer + re_search.group(0).replace(' ','%20')
+            add_str = '1. [{}]({})\n'.format( re_search_word.capitalize()  , re_search_url )
+            add_list.append(add_str)
     print('newly added untracked files:',add_list)
     
     
