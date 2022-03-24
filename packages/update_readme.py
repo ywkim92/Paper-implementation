@@ -1,23 +1,45 @@
 import re
 import os
+import subprocess as sp
 
-def update_readme(file_list, ):
-    readme_path = 'C:\\Users\\ywkim\\Github\\Paper implementation\\README.md'
+def change_url():
+    gitfiles = sp.getoutput('git ls-files')
+    gitfiles = [g.replace(' ','%20') for g in gitfiles.split('\n')]
+    gitfiles_nb = [g for g in gitfiles if re.search(r'(?<=/)[^/\.]+\.ipynb',g) is not None]
+    change_url_dict = dict(zip( [re.search(r'(?<=/)[^/\.]+\.ipynb',g).group(0) for g in gitfiles_nb] , gitfiles_nb))
+    return change_url_dict
+    
+def update_readme( file_list ):
+    readme_path = 'C:\\Users\\ywkim\\Github\\Paper implementation\\README-Copy1.md'
     github_url = 'https://github.com/ywkim92/Paper-implementation/blob/main/'
     notebook_viewer = 'https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/'
     
+    change_url_dict_ = change_url()
+    
     add_list = []
     for name in file_list:
-        re_search = re.search(r'[\w\-]+\.ipynb$', name)
+        re_search = re.search(r'[\w\-/ %]+\.ipynb$', name)
         if re_search is None: continue
         else: 
-            add_str = '1. [{}]({})\n'.format( re.search(r'^.+(?=\.ipynb)', re_search.group(0)).group(0).capitalize()  , notebook_viewer + re_search.group(0)  )
+            re_search_word = re.search(r'[^/]+(?=\.ipynb)', re_search.group(0)).group(0)
+            re_search_url = notebook_viewer + re_search.group(0).replace(' ','%20')
+            add_str = '1. [{}]({})\n'.format( re_search_word.capitalize()  , re_search_url )
             add_list.append(add_str)
+    print('newly added untracked files:',add_list)
+    
     
     lines = []
     with open(readme_path) as file:
         for f in file:
+            if re.search(r'(?<=main/)[^)]+\.ipynb(?=\))', f) is not None:
+                
+                f_cur_url = re.search(r'(?<=main/)[^)]+\.ipynb(?=\))', f).group(0)
+                f_keyword = re.search(r'[^)/]+\.ipynb$', f_cur_url).group(0)
+                if f_cur_url != change_url_dict_[f_keyword]:
+                    print('* url changed', f_keyword)
+                    f = f.replace(f_cur_url, change_url_dict_[f_keyword])
             f = f.replace(github_url, notebook_viewer)
+            
             lines.append(f)
     
     division_idx = lines.index('- - -  \n')
@@ -35,5 +57,6 @@ def update_readme(file_list, ):
         
         
 if __name__=='__main__':
+    os.chdir('C:\\Users\\ywkim\\Github\\Paper implementation')
     file_list = input().split(', ')
-    update_readme(file_list, )
+    update_readme( file_list )
