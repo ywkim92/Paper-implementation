@@ -4,18 +4,20 @@ import os
 def update_readme(file_list, ):
     readme_path = 'C:\\Users\\ywkim\\Github\\Paper implementation\\README.md'
     github_url = 'https://github.com/ywkim92/Paper-implementation/blob/main/'
+    notebook_viewer = 'https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/'
     
     add_list = []
     for name in file_list:
         re_search = re.search(r'[\w\-]+\.ipynb$', name)
         if re_search is None: continue
         else: 
-            add_str = '1. [{}]({})\n'.format( re.search(r'^.+(?=\.ipynb)', re_search.group(0)).group(0).capitalize()  , github_url + re_search.group(0)  )
+            add_str = '1. [{}]({})\n'.format( re.search(r'^.+(?=\.ipynb)', re_search.group(0)).group(0).capitalize()  , notebook_viewer + re_search.group(0)  )
             add_list.append(add_str)
     
     lines = []
     with open(readme_path) as file:
         for f in file:
+            f = f.replace(github_url, notebook_viewer)
             lines.append(f)
     
     division_idx = lines.index('- - -  \n')
