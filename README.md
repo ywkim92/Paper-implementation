@@ -4,6 +4,8 @@ Implementing Machine Learning Algorithms
 - - -  
 1. [Boxcox](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/stats_and_linalg/Boxcox.ipynb)
 
+1. [Cnn](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/neural_network/CNN.ipynb)
+
 1. [Decision_tree](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/machine_learning/Decision_tree.ipynb): [blog post](https://ywkim92.github.io/machine_learning/decision_tree/)
 
 1. [Discriminant analysis](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/machine_learning/Discriminant_analysis.ipynb)
