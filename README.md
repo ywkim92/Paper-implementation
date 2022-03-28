@@ -18,6 +18,8 @@ Implementing Machine Learning Algorithms
 
 1. [Grid search](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/machine_learning/GridSearchCV.ipynb)
 
+1. [Gru](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/neural_network/GRU.ipynb)
+
 1. [Initializer](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/neural_network/Initializer.ipynb)
 
 1. [Linear regression](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/machine_learning/Linear_regression.ipynb)
