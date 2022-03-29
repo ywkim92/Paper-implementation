@@ -45,7 +45,11 @@ def update_readme( ):
             re_search_word = re.search(r'[^/]+(?=\.ipynb)', re_search.group(0)).group(0)
             print(re_search_word)
             re_search_url = notebook_viewer + change_url_dict_copy[name].replace(' ','%20')
-            add_str = '1. [{}]({})\n'.format( re_search_word.capitalize()  , re_search_url )
+            
+            if len(re_search_word)<7: re_search_word_input = re_search_word.upper()
+            else: re_search_word_input = re_search_word.capitalize()
+            add_str = '1. [{}]({})\n'.format( re_search_word_input  , re_search_url )
+            
             add_list.append(add_str)
     print('newly added untracked files:',add_list)
     
