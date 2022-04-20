@@ -1,6 +1,8 @@
 # Implementing Machine Learning Algorithms 
 [My tech blog](https://ywkim92.github.io/)  
 - - -  
+1. [Activation_function](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/neural_network/Activation_function.ipynb)
+
 1. [Boxcox](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/stats_and_linalg/Boxcox.ipynb)
 
 1. [CNN](https://nbviewer.org/github/ywkim92/Paper-implementation/blob/main/neural_network/CNN.ipynb)
