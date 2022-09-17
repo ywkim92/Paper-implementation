@@ -27,6 +27,7 @@ class BertForCustom(BertPreTrainedModel):
         input_ids=None,
         attention_mask=None,
         token_type_ids=None,
+        query_ids = None,
         query_mask = None,
         # position_ids=None,
         # head_mask=None,
@@ -55,11 +56,12 @@ class BertForCustom(BertPreTrainedModel):
         sequence_output,  = outputs[:1]
         
         # prediction_scores: batch size * seq length * vocab size
+        # -> batch size * vocab size
         prediction_scores = self.predictions(sequence_output, ).transpose(1, 2)
         prediction_scores = self.gmp(prediction_scores).squeeze(-1)
 
-        # query_mask(transposed): vocab size * batch size
-        # query input_ids(batch size * seq length) -> one-hot encodeing(batch size * seq length * vocab size)
-        # -> sum with axis 1 (batch size * vocab size) -> transpose(vocab size * batch size)
-        score = prediction_scores.matmul(query_mask)
-        return score.sum(axis=1)
+        # query_ids: batch size * seq length
+        # query_mask: batch size * seq length
+        # score: batch size
+        score = (torch.gather(prediction_scores, 1, query_ids[:, 1:]) * query_mask[:, 1:]).sum(-1) / query_mask[:, 1:].sum(-1)
+        return score
