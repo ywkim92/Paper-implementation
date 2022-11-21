@@ -62,6 +62,7 @@ class BertForCustom(BertPreTrainedModel):
 
         # query_ids: batch size * seq length
         # query_mask: batch size * seq length
+        # torch.gather(prediction_scores, 1, query_ids[:, 1:]): batch size * (seq length - 1)
         # score: batch size
         score = (torch.gather(prediction_scores, 1, query_ids[:, 1:]) * query_mask[:, 1:]).sum(-1) / query_mask[:, 1:].sum(-1)
         return score
