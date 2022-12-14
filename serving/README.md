@@ -30,6 +30,6 @@
   - 테스트 결과 이상 없으면 아래로 넘어가고 이상 있으면 코드 수정 후 다시 docker build  
   - aws login  
     - `aws configure` → Access key ID, Secret access key 등 입력  
-    - AWS ECR login  
+    - AWS ECR login: docker와 ECR 연동  
   - `docker tag`  
   - `docker push`  
